@@ -39,9 +39,9 @@ const Header = () => {
         <div className="flex item-center gap-4 md:gap-7">
           <nav className="flex gap-4 md:gap-7 text-base md:text-lg md:flex hidden">
             <Link to={""}>Home</Link>
-            <Link to={"menu/64bbdc60e221178febdc3435"}>Menu</Link>
+            {/* <Link to={"menu/64bbdc60e221178febdc3435"}>Menu</Link>
             <Link to={"about"}>About</Link>
-            <Link to={"contact"}>Contact</Link>
+            <Link to={"contact"}>Contact</Link> */}
           </nav>
           <div className="relative text-2xl text-slate-600">
             <Link to={"cart"} >
@@ -65,9 +65,9 @@ const Header = () => {
                 } 
                 <nav className="flex text-base md:text-lg flex-col md:hidden">
                   <Link to={""} className="px-2 py-1 ">Home</Link>
-                  <Link to={"menu/64bbdc60e221178febdc3435"} className="px-2 py-1 ">Menu</Link>
+                  {/* <Link to={"menu/64bbdc60e221178febdc3435"} className="px-2 py-1 ">Menu</Link>
                   <Link to={"about"} className="px-2 py-1 ">About</Link>
-                  <Link to={"contact"} className="px-2 py-1 ">Contact</Link>
+                  <Link to={"contact"} className="px-2 py-1 ">Contact</Link> */}
               </nav>               
               </div>
             )}
