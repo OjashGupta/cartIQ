@@ -40,9 +40,9 @@ const Home = () => {
           <h2 className='text-4xl md:text-7xl font-bold py-3'>Grocery {" "}
           <span className='text-green-700 text-5xl md:text-7xl'>Delivery App</span></h2>
           <p className='py-3 text-base'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, iusto, excepturi animi vero praesentium unde, veritatis dolorem facere officiis laboriosam fuga eum provident inventore assumenda incidunt blanditiis doloribus? Alias, possimus!</p>
-          <button className='font-bold bg-green-500 hover:bg-green-600 text-white rounded px-4 py-2'>Order Now</button>
+          {/* <button className='font-bold bg-green-500 hover:bg-green-600 text-white rounded px-4 py-2'>Order Now</button> */}
         </div>
-        <div className='md:w-1/2 flex flex-wrap gap-5 p-4 justify-center'>
+        {/* <div className='md:w-1/2 flex flex-wrap gap-5 p-4 justify-center'>
           {
             homeProductCartList[0] ? homeProductCartList.map(el =>{
               return(
@@ -67,37 +67,8 @@ const Home = () => {
             })
           }
           
-        </div>
+        </div> */}
       </div>
-      <div className=''>
-        <div className='flex w-full items-center justify-between'>
-          <h2 className='font-bold text-2xl text-green-700 mb-4'>Fresh Vegetables</h2>
-        
-          <div className= 'ml-auto flex gap-4 mb-2'>
-            <button onClick={previousProduct} className='bg-slate-300 hover:bg-slate-400 text-xl p-2 rounded '><GrFormPrevious /></button>
-            <button onClick={nextProduct} className='bg-slate-300 hover:bg-slate-400 text-xl p-2 rounded'><GrFormNext /></button>
-          </div>
-        </div>
-        <div ref={slideProductRef} className='flex gap-5 overflow-scroll scrollbar-none scroll-smooth transition-all'>
-            {
-              homeProductCartListVegetable[0] ? homeProductCartListVegetable.map(el => {
-                return(
-                  <CartFeature
-                    key = {el._id+"vegetable"}
-                    id = {el._id}
-                    name = {el.name}
-                    category = {el.category}
-                    price = {el.price}
-                    image = {el.image}
-                  />
-                )
-              })
-              :
-              loadingArrayFeature.map((el, index) => (
-              <CartFeature  loading="loading..." key={index+"cartLoading"} />))        
-            }
-          </div>
-        </div>
             <AllProduct heading={"Your Fresh Products"}/>
         
     </div>

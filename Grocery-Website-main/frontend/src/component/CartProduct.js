@@ -2,6 +2,7 @@ import React from 'react'
 import {AiOutlineMinus, AiOutlinePlus, AiTwotoneDelete} from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { deleteCardItem, increaseQty, decreaseQty } from '../redux/productSlice'
+import groceries from "../image/groceries.png";
 
 const CartProduct = ({id, name, image, category, price, qty, total}) => {
 
@@ -11,7 +12,7 @@ const CartProduct = ({id, name, image, category, price, qty, total}) => {
     
     <div className='bg-white-200 p-2 flex gap-4 rounded border border-green-400'>
       <div className='bg-white p-3 rounded overflow-hidden'>
-        <img src={image} alt="Loading" className='h-28 w-40 object-cover'/>
+        <img src={groceries} alt="Loading" className='h-28 w-40 object-cover'/>
       </div>
       <div className='flex flex-col gap-1 w-full'>
         <div className='flex justify-between'>
