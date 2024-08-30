@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function scrapeCartItems() {
     const cartItems = [];
     // XPath to select all the cart product containers
-    const cartItemNodes = document.evaluate("//div[contains(@class, 'bg-green-200')]", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+    const cartItemNodes = document.evaluate("//div[contains(@class, 'bg-white-200')]", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
     for (let i = 0; i < cartItemNodes.snapshotLength; i++) {
         const itemNode = cartItemNodes.snapshotItem(i);

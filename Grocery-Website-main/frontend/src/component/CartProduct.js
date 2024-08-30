@@ -9,7 +9,7 @@ const CartProduct = ({id, name, image, category, price, qty, total}) => {
 
   return (
     
-    <div className='bg-green-200 p-2 flex gap-4 rounded border border-green-400'>
+    <div className='bg-white-200 p-2 flex gap-4 rounded border border-green-400'>
       <div className='bg-white p-3 rounded overflow-hidden'>
         <img src={image} alt="Loading" className='h-28 w-40 object-cover'/>
       </div>
