@@ -3,6 +3,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const Stripe = require('stripe')
+const { Int32 } = require('mongodb')
 
 const app = express()
 app.use(cors())
@@ -121,52 +122,71 @@ app.get("/product", async(req, res) =>{
     res.send(JSON.stringify(data))
 })
 
+const productInsightsSchema = mongoose.Schema({
+    name: String,
+    serving_size: String,
+    calories: Number,
+    protein: String,
+    fat: String,
+    carbohydrate: String,
+    sugars: String,
+    fiber: String
+  });
+  const productInsightsModel = mongoose.model(
+    "productInsights",
+    productInsightsSchema
+  );
+  
+  app.post("/uploadInsights", async (req, res) => {
+    const data = req.body.map(
+      (productInsightsData) => new productInsightsModel(productInsightsData)
+    );
+    const savedData = await productInsightsModel.insertMany(data);
+    res.send({ message: "Added" });
+  });
+  const success = {
+    SUCCESS: true,
+    FAILURE: false,
+  };
+  
+  const ResponseStatus = {
+    SUCCESS: 200,
+    CREATED: 201,
+    BAD_REQUEST: 400,
+    PAYMENT_REQUIRED: 402,
+    UNAUTHORIZED: 401,
+    FORBIDDEN: 403,
+    NOT_FOUND: 404,
+    UNPROCESSABLE_ENTITY: 422,
+    ACCESS_DENIED: 440,
+    INTERNAL_ERROR: 500,
+  };
+
+  const successResponse = (res, msg, data) => {
+    if (data) {
+      res.status(ResponseStatus.SUCCESS).send({
+        msg,
+        data,
+      });
+      return;
+    }
+    res.status(ResponseStatus.SUCCESS).send({
+      msg,
+    });
+  };
+
+  app.post("/getInsights", async (req, res) => {
+    const { productName } = req.body;
+    
+    const productDetails = await productInsightsModel.findOne({ name: productName })
+
+    console.log(productDetails);
+    return successResponse(res,"Product Details",productDetails)
+    
+  })
 
 
-const stripe  = new Stripe(process.env.STRIPE_SECRET_KEY)
 
-app.post("/create-checkout-session",async(req,res)=>{
 
-    //  try{
-    //   const params = {
-    //       submit_type : 'pay',
-    //       mode : "payment",
-    //       payment_method_types : ['card'],
-    //       billing_address_collection : "auto",
-    //       shipping_options : [{shipping_rate : "shr_1NaZ3QSGLPNiaLBBQHWElQ8P"}],
-
-    //       line_items : req.body.map((item)=>{
-    //         return{
-    //           price_data : {
-    //             currency : "inr",
-    //             product_data : {
-    //               name : item.name,
-    //               // images : [item.image]
-    //             },
-    //             unit_amount : item.price * 100,
-    //           },
-    //           adjustable_quantity : {
-    //             enabled : true,
-    //             minimum : 1,
-    //           },
-    //           quantity : item.qty
-    //         }
-    //       }),
-
-    //       success_url : `${process.env.FRONTEND_URL}/success`,
-    //       cancel_url : `${process.env.FRONTEND_URL}/cancel`,
-
-    //   }
-
-      
-    //   const session = await stripe.checkout.sessions.create(params)
-    //   // console.log(session)
-    //   res.status(200).json(session.id)
-    //  }
-    //  catch (err){
-    //     res.status(err.statusCode || 500).json(err.message)
-    //  }
-
-})
 
 app.listen(PORT, () => console.log("Server is running at port : " + PORT))

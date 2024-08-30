@@ -110,3 +110,14 @@
     margin: 5px 0;
     color: #2E8B57;
   }
+
+.details {
+    margin-top: 10px;
+}
+
+.details-content {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
