@@ -37,6 +37,7 @@
     background-color: #f0fff0;
     color: #006400;
     width: 350px;
+    height: 500px;
     margin: 0;
     padding: 20px;
   }
@@ -77,6 +78,7 @@
   
   .section.active {
     display: block;
+    padding: 20px;
   }
   
   h2 {
@@ -120,4 +122,18 @@
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 300px;
+    width: 100%;
+    padding: 20px;
+}
+.canvas {
+    border: 1px solid #000;
+}
+.calories-heading{
+    font-weight: bold;
 }

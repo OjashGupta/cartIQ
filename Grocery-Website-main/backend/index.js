@@ -186,7 +186,25 @@ const productInsightsSchema = mongoose.Schema({
   })
 
 
+  app.post("/getAllInsights", async (req, res) => {
+    const { listOfProducts } = req.body;
+    products_details = [];
+    for (let i = 0; i < listOfProducts.length; i++) {
+      prod_detail = await productInsightsModel.findOne({
+        name: listOfProducts[i],
+      });
+      products_details.push(prod_detail);
+    }
+    return successResponse(res, "All product Details", products_details);
+  });
 
+  app.post("/similarItems", async (req,res) => {
+    const { listOfCategories } = req.body;
+    const similarItems = await productModel.find({
+        category: { $in: listOfCategories}
+    });
+    return successResponse(res, "Similar Products",similarItems)
+  })
 
 
 app.listen(PORT, () => console.log("Server is running at port : " + PORT))

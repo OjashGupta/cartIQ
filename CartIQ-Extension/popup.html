@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Grocery Nutrition</title>
@@ -14,6 +14,38 @@
     </div>
     <div id="cart-items" class="section active">
       <h1>Cart Items</h1>
+    </div>
+    <div id="similar-items" class="section">
+      <h1>Similar Items</h1>
+    </div>
+    <div id="insights" class="section">
+      <h1>Insights</h1>
+    </div>
+    <div id="past-trends" class="section">
+      <h1>Past Trends</h1>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grocery Nutrition</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="popup.js"></script>
+</head>
+<body>
+  <div id="content">
+    <div id="buttons">
+      <button id="cart-items-btn" class="btn">Cart Items</button>
+      <button id="similar-items-btn" class="btn">Similar Items</button>
+      <button id="insights-btn" class="btn">Insights</button>
+      <button id="past-trends-btn" class="btn">Past Trends</button>
+    </div>
+    <div id="cart-items" class="section active">
+      <h1>Cart Items</h1>
       <!-- Cart items content will be populated here -->
     </div>
     <div id="similar-items" class="section">
@@ -22,13 +54,17 @@
     </div>
     <div id="insights" class="section">
       <h1>Insights</h1>
+      <div id="calories" class="calories-heading">
+      </div>
+      <canvas id="myCanvas" width="400" height="280"></canvas>
+      <!-- <div id="container" style="width: 100%; height: 400px;"></div> -->
       <!-- Insights content will be populated here -->
     </div>
     <div id="past-trends" class="section">
       <h1>Past Trends</h1>
+      <canvas id="pastTrend" width="300" height="320"></canvas>
       <!-- Past trends content will be populated here -->
     </div>
   </div>
-  <script src="popup.js"></script>
 </body>
 </html>
